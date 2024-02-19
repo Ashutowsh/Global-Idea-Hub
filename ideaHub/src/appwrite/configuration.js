@@ -1,5 +1,5 @@
 import config from "../config/config.js";
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Client, ID, Databases, Storage, Query, Account } from "appwrite";
 
 export class Service {
   client = new Client();
@@ -50,7 +50,7 @@ export class Service {
     }
   }
 
-  async deletePost(slug) {
+  async deleteIdea(slug) {
     try {
       await this.databases.deleteDocument(
         config.databaseId,

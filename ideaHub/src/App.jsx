@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Header, Footer } from "./components/index.js";
 import authService from "./appwrite/auth.js";
-// import { Outlet } from "react-router-dom";
+import { login, logout } from "./store/authSlice.js";
+import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
     authService
@@ -19,10 +20,10 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-gray-400 justify-center">
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-700 justify-center">
       <div className="w-full block">
         <Header />
-        <main>{/* TODO:  <Outlet /> */}</main>
+        <Outlet />
         <Footer />
       </div>
     </div>
